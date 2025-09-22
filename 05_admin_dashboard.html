@@ -1,79 +1,190 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Admin Dashboard — TecServicios (Mockup)</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin — Dashboard | TecServicios</title>
+  <meta name="description" content="Panel de administración de servicios (demo sin backend)" />
   <style>
-    :root{--brand:#0b61a4}
-    body{font-family:Inter, Roboto, system-ui, -apple-system, sans-serif; background:#f8f9fa}
-    .admin-sidebar{min-height:70vh}
+    :root {
+      --bg: #0b1020; --surface: #121937; --text: #e6eaf3; --muted:#a5b0d6;
+      --primary:#6366f1; --accent:#22d3ee; --radius:12px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text); background: linear-gradient(160deg, var(--bg), #0d1328 60%, #0f1430);
+    }
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+    .navbar { position: sticky; top:0; background: rgba(11,16,32,.6); backdrop-filter: blur(8px); border-bottom:1px solid rgba(255,255,255,.08); }
+    .nav-wrap { display:flex; align-items:center; justify-content:space-between; padding:12px 0; }
+    .brand { font-weight:800; color:#fff; text-decoration:none; }
+    .nav { list-style:none; display:flex; gap:16px; margin:0; padding:0; }
+    .nav a { color: var(--text); text-decoration:none; opacity:.92; }
+    .nav a:hover { opacity:1; }
+    .btn, button {
+      display:inline-flex; align-items:center; justify-content:center; gap:6px;
+      padding:8px 12px; border-radius:10px; cursor:pointer; border:1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.06); color:#fff; text-decoration:none; font-size:14px;
+    }
+    .btn:hover { background: rgba(255,255,255,.12); }
+    .btn-primary { background: linear-gradient(135deg, var(--primary), var(--accent)); border: none; }
+    .toolbar { display:flex; align-items:center; justify-content:space-between; gap:10px; margin: 20px 0 10px; }
+    .card { background: var(--surface); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 16px; box-shadow: 0 10px 25px rgba(0,0,0,.3); }
+    .table-responsive { overflow-x:auto; }
+    table { width:100%; border-collapse:collapse; }
+    thead th {
+      text-align:left; font-weight:700; padding:10px; border-bottom:1px solid rgba(255,255,255,.12);
+    }
+    tbody td {
+      padding:10px; border-bottom:1px solid rgba(255,255,255,.06); vertical-align:top;
+    }
+    tbody tr:hover { background: rgba(255,255,255,.03); }
+    .thumb { width:56px; height:40px; object-fit:cover; border-radius:8px; border:1px solid rgba(255,255,255,.08); }
+    .badge { display:inline-block; padding:4px 8px; border-radius:999px; font-size:12px; border:1px solid rgba(255,255,255,.25); }
+    .yes { background: rgba(34,211,238,.22); color:#aaf2ff; border-color: rgba(34,211,238,.35); }
+    .no  { background: rgba(239,68,68,.15);  color:#ffd1d1; border-color: rgba(239,68,68,.35); }
+    .footer { margin-top: 40px; border-top: 1px solid rgba(255,255,255,.08); padding: 20px 0; text-align: center; color: var(--muted); }
   </style>
+  <script>
+    // Protección de ruta: si no hay "sesión", manda al login
+    (function() {
+      if (localStorage.getItem('isAdmin') !== '1') {
+        location.replace('04_admin_login.html');
+      }
+    })();
+  </script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
-  <div class="container"><a class="navbar-brand" href="#"><strong style="color:var(--brand)">TecServicios</strong></a></div>
-</nav>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-wrap">
+      01_home.htmlTecServicios</a>
+      <nav aria-label="Principal">
+        <ul class="nav">
+          <li>01_home.htmlInicio</a></li>
+          <li>02_catalog.htmlServicios</a></li>
+          <li>03_detail.htmlDetalle</a></li>
+          <li><a href="#" id="btnLogout" class="ul>
+      </nav>
+    </div>
+  </header>
 
-<main class="container my-4">
-  <div class="bg-white p-3 rounded">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="admin-sidebar p-3 bg-white border rounded">
-          <h6>Admin</h6>
-          <ul class="nav flex-column">
-            <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
-            <li class="nav-item"><a class="nav-link active" href="#">Servicios</a></li>
-            <li class="nav-item"><a class="nav-link text-danger" href="01_home_mockup.html">Cerrar sesión</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-9">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h5>Gestión de Servicios</h5>
-          <button class="btn btn-success" onclick="openCreateForm()">Crear servicio</button>
-        </div>
-        <table class="table table-hover">
-          <thead><tr><th>ID</th><th>Imagen</th><th>Nombre</th><th>Precio</th><th>Cantidad</th><th>Promo</th><th>Acciones</th></tr></thead>
-          <tbody id="admin-table"></tbody>
+  <!-- CONTENIDO -->
+  <main class="container" id="contenido" tabindex="-1">
+    <section class="toolbar">
+      <h1>Gestión de Servicios</h1>
+      #Crear servicio</a>
+    </section>
+
+    <section class="card">
+      <div class="table-responsive">
+        <table id="tblServicios" aria-describedby="grid-servicios-descripcion">
+          <caption id="grid-servicios-descripcion" class="sr-only" style="position:absolute;left:-9999px;">
+            Tabla con los servicios disponibles para administración.
+          </caption>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Categoría</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Promo</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody><!-- render dinámico --></tbody>
         </table>
       </div>
-    </div>
-  </div>
-</main>
+    </section>
+  </main>
 
-<footer class="bg-white border-top py-3 mt-4">
-  <div class="container text-center text-muted">&copy; 2025 TecServicios S.A.S.</div>
-</footer>
+  <footer class="footer">
+    <div class="container">© 2025 TecServicios S.A.S.</div>
+  </footer>
 
-<script>
-const services = [
-  {id:1,name:'Desarrollo Web',price:1800000,stock:5,img:'https://picsum.photos/seed/s1/80/60',promo:false},
-  {id:2,name:'App Móvil',price:3200000,stock:3,img:'https://picsum.photos/seed/s2/80/60',promo:true},
-  {id:3,name:'Soporte TI',price:600000,stock:12,img:'https://picsum.photos/seed/s3/80/60',promo:false},
-  {id:4,name:'Migración a la nube',price:2100000,stock:7,img:'https://picsum.photos/seed/s4/80/60',promo:false},
-  {id:5,name:'Consultoría',price:900000,stock:8,img:'https://picsum.photos/seed/s5/80/60',promo:false},
-  {id:6,name:'Integraciones API',price:1200000,stock:6,img:'https://picsum.photos/seed/s6/80/60',promo:true},
-  {id:7,name:'QA & Testing',price:700000,stock:10,img:'https://picsum.photos/seed/s7/80/60',promo:false},
-  {id:8,name:'UI/UX',price:1400000,stock:4,img:'https://picsum.photos/seed/s8/80/60',promo:false},
-  {id:9,name:'Hosting y Dominios',price:300000,stock:50,img:'https://picsum.photos/seed/s9/80/60',promo:false},
-  {id:10,name:'Analítica',price:1000000,stock:5,img:'https://picsum.photos/seed/s10/80/60',promo:false}
-];
+  <!-- Lógica demo (sin backend) -->
+  <script>
+    // Datos semilla (puedes editar libremente)
+    const servicios = [
+      { id:1,  nombre:"Desarrollo Web",     categoria:"Desarrollo",      precio:1800000, promo:true,  precioPromo:1500000, cantidad:8,  imagen:"https://via.placeholder.com/112x80?text=Web" },
+      { id:2,  nombre:"Aplicación Móvil",   categoria:"Desarrollo",      precio:3200000, promo:false, precioPromo:null,    cantidad:4,  imagen:"https://via.placeholder.com/112x80?text=App" },
+      { id:3,  nombre:"Soporte TI",         categoria:"Infraestructura",  precio:600000,  promo:true,  precioPromo:500000,  cantidad:20, imagen:"https://via.placeholder.com/112x80?text=Soporte" },
+      { id:4,  nombre:"Migración a la Nube",categoria:"Cloud",            precio:2100000, promo:false, precioPromo:null,    cantidad:5,  imagen:"https://via.placeholder.com/112x80?text=Cloud" },
+      { id:5,  nombre:"Diseño UI/UX",       categoria:"Diseño",           precio:1200000, promo:true,  precioPromo:980000,  cantidad:10, imagen:"https://via.placeholder.com/112x80?text=UI%2FUX" },
+      { id:6,  nombre:"Integraciones API",  categoria:"Integraciones",    precio:1600000, promo:false, precioPromo:null,    cantidad:7,  imagen:"https://via.placeholder.com/112x80?text=API" },
+      { id:7,  nombre:"Pruebas QA",         categoria:"Calidad",          precio:900000,  promo:false, precioPromo:null,    cantidad:12, imagen:"https://via.placeholder.com/112x80?text=QA" },
+      { id:8,  nombre:"Automatización RPA", categoria:"Automatización",   precio:2400000, promo:true,  precioPromo:2100000, cantidad:3,  imagen:"https://via.placeholder.com/112x80?text=RPA" },
+      { id:9,  nombre:"Analítica de Datos", categoria:"Datos",             precio:2000000, promo:false, precioPromo:null,    cantidad:6,  imagen:"https://via.placeholder.com/112x80?text=BI" },
+      { id:10, nombre:"Ciberseguridad",     categoria:"Seguridad",        precio:1100000, promo:false, precioPromo:null,    cantidad:9,  imagen:"https://via.placeholder.com/112x80?text=Sec" }
+    ];
 
-function renderAdminTable(){
-  const tbody = document.getElementById('admin-table'); tbody.innerHTML='';
-  services.forEach(s=>{
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${s.id}</td><td><img src="${s.img}" width="60"/></td><td>${s.name}</td><td>$${s.price.toLocaleString()}</td><td>${s.stock}</td><td>${s.promo? 'Sí':'No'}</td><td><button class="btn btn-sm btn-outline-primary me-1" onclick="alert('Editar: ${s.name}')">Editar</button><button class="btn btn-sm btn-outline-danger" onclick="alert('Eliminar: ${s.name}')">Eliminar</button></td>`;
-    tbody.appendChild(tr);
-  });
-}
+    const fmtCOP = new Intl.NumberFormat('es-CO', { style:'currency', currency:'COP', maximumFractionDigits:0 });
 
-function openCreateForm(){ alert('Abrir formulario para crear servicio (mock)'); }
-document.addEventListener('DOMContentLoaded', renderAdminTable);
-</script>
+    function precioTexto(s) {
+      return s.promo && s.precioPromo ? fmtCOP.format(s.precioPromo) : fmtCOP.format(s.precio);
+    }
+    function promoBadge(s) {
+      return s.promo ? '<span class="badge yes">Sí</span>' : '<span class="badge no">No</span>';
+    }
+    function filaServicio(s) {
+      return `
+        <tr>
+          <td>${s.id}</td>
+          <td>${s.imagen}</td>
+          <td>${s.nombre}</td>
+          <td>${s.categoria}</td>
+          <td><strong>${precioTexto(s)}</strong></td>
+          <td>${s.cantidad}</td>
+          <td>${promoBadge(s)}</td>
+          <td>
+            <button class="btn btn-editar" data-id="${s.id}">Editar</button>
+            <button class="btn btn-eliminar" data-id="${s.id}">Eliminar</button>
+          </td>
+        </tr>
+      `;
+    }
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    function renderTabla() {
+      const tbody = document.querySelector('#tblServicios tbody');
+      tbody.innerHTML = servicios.map(filaServicio).join('');
+    }
+
+    // Acciones demo (en Semana 7 haremos CRUD "real" con JSON)
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('#btnCrear')) {
+        e.preventDefault();
+        alert('Demo: Crear servicio (CRUD real en Semana 7).');
+      }
+      const btnE = e.target.closest('.btn-editar');
+      const btnD = e.target.closest('.btn-eliminar');
+      if (btnE) {
+        const id = +btnE.dataset.id;
+        alert('Demo: Editar servicio ID ' + id);
+      }
+      if (btnD) {
+        const id = +btnD.dataset.id;
+        const ok = confirm('Demo: ¿Eliminar servicio ID ' + id + '?');
+        if (ok) {
+          alert('Demo: servicio ' + id + ' eliminado (no persistente en Semana 5).');
+        }
+      }
+    });
+
+    // Logout
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('#btnLogout');
+      if (btn) {
+        e.preventDefault();
+        localStorage.removeItem('isAdmin');
+        location.href = '01_home.html';
+      }
+    });
+
+    // Init
+    renderTabla();
+  </script>
 </body>
 </html>
