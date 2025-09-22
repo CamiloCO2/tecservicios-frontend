@@ -1,0 +1,9 @@
+# SO/Editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Build/Empaquetados (por si luego agregamos tooling)
+dist/
+build/
+*.zip
