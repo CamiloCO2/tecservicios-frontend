@@ -15,7 +15,7 @@
     "categoria": "Desarrollo",
     "precio": 3200000,
     "cantidad": 4,
-    "promo": false,
+    "promo": true,
     "imagen": "assets/img/services/app-movil.svg",
     "descripcion": "Apps nativas y multiplataforma con UX centrada en el usuario."
   },

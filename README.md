@@ -1,35 +1,27 @@
-# TecServicios - Frontend (Modular + Acerca & Contacto)
 
-Sitio estático con **HTML + CSS + JavaScript (ES Modules)**.
+# TecServicios - Frontend (FIX)
 
-## Estructura
-```
-tecservicios-frontend/
-├─ index.html
-├─ servicios.html
-├─ detalle.html
-├─ acerca.html
-├─ contacto.html
-├─ admin/
-│  ├─ login.html
-│  └─ dashboard.html
-├─ components/
-└─ assets/
-   ├─ css/
-   │  ├─ base/{variables.css, utilities.css}
-   │  ├─ components/{navbar.css, cards.css}
-   │  ├─ pages/{home.css, catalogo.css, detalle.css, admin.css, acerca.css, contacto.css}
-   │  └─ styles.css
-   ├─ js/
-   │  ├─ core/{api.js, store.js, format.js, dom.js}
-   │  ├─ pages/{home.js, catalogo.js, detalle.js, login.js, dashboard.js, acerca.js, contacto.js}
-   │  └─ app.js
-   ├─ data/servicios.json
-   └─ img/logo.svg
-```
+Sitio estático con **HTML + CSS + JS (ES Modules)**. Todo el contenido de imágenes es **local**.
 
-## Cómo ejecutar
-- Usa **Live Server** o publica en **GitHub Pages**.
-- **Login demo:** `admin@tecservicios.com` / `123456`
+## Páginas
+- `index.html` (Home con destacados)
+- `servicios.html` (Catálogo con buscador)
+- `detalle.html` (?id=)
+- `acerca.html`
+- `contacto.html`
+- `admin/login.html` (demo: admin@tecservicios.com / 123456)
+- `admin/dashboard.html` (CRUD localStorage)
 
-> Nota: abrir con `file://` puede bloquear el `fetch` del JSON; sirve la carpeta o usa Pages.
+## Datos
+`assets/data/servicios.json` → 10 servicios con rutas **locales** de imagen (`assets/img/services/*.svg`).
+
+## Rutas de imágenes
+El JS resuelve rutas automáticamente cuando estás en `/admin/` (antepone `../` para encontrar `assets/...`).
+
+## Cómo publicar (GitHub Pages)
+- Subir todo el contenido de esta carpeta a tu repo.
+- Settings → Pages → Deploy from a branch → `main` / `(root)`.
+- Esperar 1–3 minutos.
+
+## Nota
+Si ya tenías datos en `localStorage` del sitio anterior, puedes vaciarlo desde la consola del navegador o usar otro navegador para ver el catálogo base.
