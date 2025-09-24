@@ -1,48 +1,23 @@
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta
-    http-equiv="refresh"
-    content="0; url=01_home.html"
-  />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Redirigiendo… | TecServicios</title>
-  <1_home.html
-  <style>
-    body {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      margin: 0; padding: 24px;
-      display: grid; place-items: center; min-height: 100vh;
-      color: #111827; background: #f8fafc;
-    }
-    .card {
-      max-width: 560px; width: 100%;
-      background: #fff; border: 1px solid #e5e7eb; border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,.06);
-      padding: 24px;
-      text-align: center;
-    }
-    a { color: #2563eb; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-  </style>
-  <script>
-    // Preserva query (?foo=bar) y hash (#seccion) si llegan por la URL pública
-    (function () {
-      var target = "01_home.html" + window.location.search + window.location.hash;
-      // replace() no deja en el historial la URL intermedia /index.html
-      window.location.replace(target);
-    })();
-  </script>
-</head>
-<body>
-  <div class="card">
-    <h1>Redirigiendo a TecServicios…</h1>
-    <p>Si no eres redirigido automáticamente, haz clic aquí:</p>
-    <p>01_home.htmlIr a la página de inicio</a></p>
-  </div>
-  <noscript>
-    <meta http-equiv="refresh" content="0; url=01_home.html" />
-  </noscript>
-</body>
-</html>
+<!doctype html><html lang='es'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>TecServicios - Inicio</title><meta name='description' content='TecServicios - Soluciones de software'><link rel='icon' href='assets/img/logo.svg'><link rel='stylesheet' href='assets/css/styles.css'></head><body><header class="navbar"><div class="nav-inner"><a class="logo" href="index.html"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z" fill="#a29bfe"/></svg> TecServicios</a><nav class="menu"><a href="index.html" id="m-home">Inicio</a><a href="servicios.html" id="m-serv">Servicios</a><a href="acerca.html" id="m-about">Acerca</a><a href="contacto.html" id="m-contact">Contacto</a><a href="admin/login.html">Admin</a></nav></div></header>
+<main class='container'>
+  <section class='hero card'>
+    <div>
+      <h1>TecServicios - Soluciones de software para tu negocio</h1>
+      <p>Creamos aplicaciones a la medida, soporte y consultoría tecnológica para que tu empresa escale.</p>
+      <div class='actions'>
+        <a class='btn btn-primary' href='servicios.html'>Ver servicios</a>
+        <a class='btn btn-secondary' href='acerca.html'>Conócenos</a>
+      </div>
+    </div>
+    <div>
+      <img src='https://via.placeholder.com/520x360?text=TecServicios' alt='Ilustración TecServicios'>
+    </div>
+  </section>
+  <section class='container' style='padding-left:0;padding-right:0'>
+    <h2>Servicios destacados</h2>
+    <div id='destacados' class='grid grid-4'></div>
+  </section>
+</main>
+<footer>© 2025 TecServicios S.A.S.</footer>
+<script type='module' src='assets/js/app.js'></script>
+</body></html>

@@ -1,0 +1,1 @@
+export function formatCOP(n){try{return new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(n)}catch(_){return '$'+(n||0).toLocaleString('es-CO')}}export function getParam(name){const u=new URL(location.href);return u.searchParams.get(name)}

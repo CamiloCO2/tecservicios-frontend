@@ -1,0 +1,1 @@
+const AUTH_KEY='authToken';export function isAuthed(){return !!localStorage.getItem(AUTH_KEY)}export function login(){localStorage.setItem(AUTH_KEY,'ok')}export function logout(){localStorage.removeItem(AUTH_KEY)}

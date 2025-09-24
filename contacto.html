@@ -1,0 +1,31 @@
+<!doctype html><html lang='es'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>TecServicios - Contacto</title><meta name='description' content='TecServicios - Soluciones de software'><link rel='icon' href='assets/img/logo.svg'><link rel='stylesheet' href='assets/css/styles.css'></head><body><header class="navbar"><div class="nav-inner"><a class="logo" href="index.html"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z" fill="#a29bfe"/></svg> TecServicios</a><nav class="menu"><a href="index.html" id="m-home">Inicio</a><a href="servicios.html" id="m-serv">Servicios</a><a href="acerca.html" id="m-about">Acerca</a><a href="contacto.html" id="m-contact">Contacto</a><a href="admin/login.html">Admin</a></nav></div></header>
+<main class='container'>
+  <section class='card' style='padding:18px'>
+    <h1>Contacto</h1>
+    <p class='muted'>Cuéntanos sobre tu proyecto. Te responderemos lo antes posible.</p>
+    <form id='form-contacto' class='contact-form' novalidate>
+      <div class='form-grid'>
+        <label>Nombre completo<br><input type='text' name='nombre' required placeholder='Tu nombre'></label>
+        <label>Email<br><input type='email' name='email' required placeholder='tucorreo@ejemplo.com'></label>
+        <label>Asunto<br><input type='text' name='asunto' required placeholder='Asunto del mensaje'></label>
+        <label style='grid-column:1/-1'>Mensaje<br><textarea name='mensaje' rows='5' required placeholder='Describe brevemente tu necesidad'></textarea></label>
+      </div>
+      <div class='actions' style='margin-top:12px'>
+        <button class='btn btn-primary' type='submit'>Enviar</button>
+        <button class='btn btn-secondary' type='reset'>Limpiar</button>
+      </div>
+      <p id='contacto-msg' class='muted' style='margin-top:10px'></p>
+    </form>
+  </section>
+  <section class='card' style='padding:18px; margin-top:18px'>
+    <h2>Información</h2>
+    <div class='info-grid'>
+      <div><h4>Email</h4><p><a href='mailto:contacto@tecservicios.com'>contacto@tecservicios.com</a></p></div>
+      <div><h4>Teléfono</h4><p><a href='tel:+573001112233'>+57 300 111 2233</a></p></div>
+      <div><h4>Horario</h4><p>Lunes a Viernes, 8:00 a 18:00</p></div>
+    </div>
+  </section>
+</main>
+<footer>© 2025 TecServicios S.A.S.</footer>
+<script type='module' src='assets/js/app.js'></script>
+</body></html>

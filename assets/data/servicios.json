@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "nombre": "Desarrollo Web",
+    "categoria": "Desarrollo",
+    "precio": 1800000,
+    "cantidad": 8,
+    "promo": true,
+    "imagen": "https://via.placeholder.com/320x200?text=Desarrollo+Web",
+    "descripcion": "Sitios corporativos y e-commerce responsivos, optimizados para SEO y performance."
+  },
+  {
+    "id": 2,
+    "nombre": "Aplicación Móvil",
+    "categoria": "Desarrollo",
+    "precio": 3200000,
+    "cantidad": 4,
+    "promo": false,
+    "imagen": "https://via.placeholder.com/320x200?text=App+Movil",
+    "descripcion": "Apps nativas y multiplataforma con UX centrada en el usuario."
+  },
+  {
+    "id": 3,
+    "nombre": "Soporte TI",
+    "categoria": "Infraestructura",
+    "precio": 600000,
+    "cantidad": 20,
+    "promo": true,
+    "imagen": "https://via.placeholder.com/320x200?text=Soporte+TI",
+    "descripcion": "Monitoreo, mantenimiento preventivo y correctivo para tu operación."
+  },
+  {
+    "id": 4,
+    "nombre": "Migración a la Nube",
+    "categoria": "Cloud",
+    "precio": 2100000,
+    "cantidad": 5,
+    "promo": false,
+    "imagen": "https://via.placeholder.com/320x200?text=Cloud",
+    "descripcion": "Evaluación, arquitectura y migración segura a AWS/Azure/GCP."
+  },
+  {
+    "id": 5,
+    "nombre": "Consultoría",
+    "categoria": "Consultoría",
+    "precio": 900000,
+    "cantidad": 8,
+    "promo": false,
+    "imagen": "https://via.placeholder.com/320x200?text=Consultoria",
+    "descripcion": "Acompañamiento estratégico en procesos de transformación digital."
+  },
+  {
+    "id": 6,
+    "nombre": "Integraciones API",
+    "categoria": "Integraciones",
+    "precio": 1200000,
+    "cantidad": 6,
+    "promo": true,
+    "imagen": "https://via.placeholder.com/320x200?text=API",
+    "descripcion": "Diseño y consumo de APIs REST/GraphQL, orquestación y middleware."
+  },
+  {
+    "id": 7,
+    "nombre": "QA & Testing",
+    "categoria": "Calidad",
+    "precio": 700000,
+    "cantidad": 12,
+    "promo": false,
+    "imagen": "https://via.placeholder.com/320x200?text=QA",
+    "descripcion": "Pruebas funcionales, automatizadas y de regresión para asegurar calidad."
+  },
+  {
+    "id": 8,
+    "nombre": "UI/UX",
+    "categoria": "Diseño",
+    "precio": 1400000,
+    "cantidad": 10,
+    "promo": false,
+    "imagen": "https://via.placeholder.com/320x200?text=UI%2FUX",
+    "descripcion": "Investigación, wireframes, prototipos y sistemas de diseño."
+  },
+  {
+    "id": 9,
+    "nombre": "Automatización RPA",
+    "categoria": "Automatización",
+    "precio": 2100000,
+    "cantidad": 3,
+    "promo": true,
+    "imagen": "https://via.placeholder.com/320x200?text=RPA",
+    "descripcion": "Bots para procesos repetitivos con medición de ROI."
+  },
+  {
+    "id": 10,
+    "nombre": "Analítica de Datos",
+    "categoria": "Datos",
+    "precio": 2000000,
+    "cantidad": 6,
+    "promo": false,
+    "imagen": "https://via.placeholder.com/320x200?text=BI",
+    "descripcion": "Dashboards y modelos descriptivos/predictivos para toma de decisiones."
+  }
+]

@@ -1,0 +1,55 @@
+<!doctype html><html lang='es'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>TecServicios - Dashboard Administrador</title><meta name='description' content='TecServicios - Soluciones de software'><link rel='icon' href='../assets/img/logo.svg'><link rel='stylesheet' href='../assets/css/styles.css'></head><body>
+<header class='navbar'><div class='nav-inner'><a class='logo' href='../index.html'><img src='../assets/img/logo.svg' alt='Logo' style='width:28px;height:28px'> TecServicios</a></div></header>
+<main id='dashboard' class='container'>
+  <div class='panel'>
+    <aside class='side'>
+      <h3>Admin</h3>
+      <a class='active' href='#'>Dashboard</a>
+      <a href='#' id='btn-salir'>Cerrar sesión</a>
+    </aside>
+    <section class='content'>
+      <header style='display:flex; justify-content:space-between; align-items:center; gap:10px'>
+        <h2 style='margin:0'>Gestión de Servicios</h2>
+        <button class='btn btn-green' id='btn-nuevo' type='button'>Crear servicio</button>
+      </header>
+
+      <form id='form-servicio' class='card' style='margin:14px 0; padding:14px'>
+        <input type='hidden' name='id'>
+        <div style='display:grid; grid-template-columns: repeat(6, 1fr); gap:10px'>
+          <label style='grid-column: span 3'>Nombre<br><input required name='nombre' placeholder='Nombre del servicio'></label>
+          <label style='grid-column: span 3'>Categoría<br><input required name='categoria' placeholder='Categoría'></label>
+          <label>Precio<br><input required name='precio' type='number' min='0' step='10000' placeholder='0'></label>
+          <label>Cantidad<br><input required name='cantidad' type='number' min='0' step='1' placeholder='0'></label>
+          <label style='display:flex; align-items:center; gap:8px'>Promo <input name='promo' type='checkbox'></label>
+          <label style='grid-column: span 3'>Imagen (URL)<br><input name='imagen' placeholder='https://...'></label>
+          <label style='grid-column: 1 / -1'>Descripción<br><textarea name='descripcion' rows='3' placeholder='Descripción del servicio'></textarea></label>
+        </div>
+        <div class='actions' style='margin-top:10px'>
+          <button class='btn btn-primary' type='submit'>Guardar</button>
+          <button class='btn btn-secondary' type='reset'>Limpiar</button>
+        </div>
+      </form>
+
+      <div class='card' style='overflow:auto'>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Categoría</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Promo</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id='tbody'></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</main>
+<footer>© 2025 TecServicios S.A.S.</footer>
+<script type='module' src='../assets/js/app.js'></script>
+</body></html>
