@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1020"/>
+      <stop offset="100%" stop-color="#2d1b69"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6c5ce7"/>
+      <stop offset="100%" stop-color="#a29bfe"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="500" fill="url(#bg)"/>
+  <g>
+    <circle cx="780" cy="120" r="100" fill="url(#brand)" opacity="0.25"/>
+    <circle cx="820" cy="160" r="80" fill="url(#brand)" opacity="0.16"/>
+  </g>
+  <text x="60" y="210" fill="#ffffff" font-size="44" font-weight="800" font-family="Segoe UI, Roboto">TecServicios</text>
+  <text x="60" y="260" fill="#dfe6e9" font-size="22" font-family="Segoe UI, Roboto">Soluciones de software para tu negocio</text>
+</svg>

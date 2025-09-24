@@ -1,1 +1,40 @@
-import {formatCOP} from './format.js';export function isAdminPage(){return location.pathname.includes('/admin/')}export function createServiceCard(s){const a=document.createElement('article');a.className='card service-card';a.innerHTML=`<img alt="${s.nombre}" src="${s.imagen}" loading="lazy"/><div class="card-body">${s.promo?'<span class="badge">Promo</span>':''}<h3 class="service-title">${s.nombre}</h3><div class="muted">${s.categoria}</div><div class="price">${formatCOP(s.precio)}</div><a class="btn btn-secondary" href="${isAdminPage()?'../':''}detalle.html?id=${encodeURIComponent(s.id)}">Ver detalle</a></div>`;return a}export function setActiveNav(){const map=[{id:'m-home',test:p=>/index\.html$/.test(p)||/\/$/.test(p)},{id:'m-serv',test:p=>/servicios\.html$/.test(p)},{id:'m-about',test:p=>/acerca\.html$/.test(p)},{id:'m-contact',test:p=>/contacto\.html$/.test(p)}];const p=location.pathname;for(const {id,test}of map){const el=document.getElementById(id);if(el&&test(p))el.classList.add('active')}}
+
+import { formatCOP } from './format.js';
+
+export function isAdminPage(){ return location.pathname.includes('/admin/'); }
+
+function resolveImg(p){
+  if(/^https?:/i.test(p)) return p; // external
+  // images stored relative to site root public pages
+  return isAdminPage() ? ('../' + p) : p;
+}
+
+export function createServiceCard(s){
+  const a = document.createElement('article');
+  a.className = 'card service-card';
+  const imgSrc = resolveImg(s.imagen);
+  a.innerHTML = `
+    <img alt="${s.nombre}" src="${imgSrc}" loading="lazy"/>
+    <div class="card-body">
+      ${s.promo ? '<span class="badge">Promo</span>' : ''}
+      <h3 class="service-title">${s.nombre}</h3>
+      <div class="muted">${s.categoria}</div>
+      <div class="price">${formatCOP(s.precio)}</div>
+      <a class="btn btn-secondary" href="${isAdminPage() ? '../' : ''}detalle.html?id=${encodeURIComponent(s.id)}">Ver detalle</a>
+    </div>`;
+  return a;
+}
+
+export function setActiveNav(){
+  const map = [
+    { id:'m-home', test: p=>/index\.html$/.test(p) || /\/$/.test(p) },
+    { id:'m-serv', test: p=>/servicios\.html$/.test(p) },
+    { id:'m-about', test: p=>/acerca\.html$/.test(p) },
+    { id:'m-contact', test: p=>/contacto\.html$/.test(p) }
+  ];
+  const p = location.pathname;
+  for(const {id,test} of map){
+    const el = document.getElementById(id);
+    if(el && test(p)) el.classList.add('active');
+  }
+}
